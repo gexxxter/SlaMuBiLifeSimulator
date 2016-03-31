@@ -34,10 +34,10 @@ public class Entity : MonoBehaviour {
     {
        if(col.gameObject.tag == "Entity")
         {
-            Entity enemy =col.gameObject.GetComponent<Entity>();
+            Entity enemy = col.gameObject.GetComponent<Entity>();
             if(enemy.power < this.power) {
                 Destroy(col.gameObject);
-                if(timeLastBreed > 0.000001f)
+                if(timeLastBreed > 0.02f)
                 {
                     GameObject newEntity=clone(col.gameObject.transform.position);
                     newEntity.GetComponent<Entity>().power = power;
@@ -52,7 +52,11 @@ public class Entity : MonoBehaviour {
         GameObject newEntity = (GameObject)Instantiate(this.gameObject, position, Quaternion.identity);
         newEntity.GetComponent<Entity>().power = this.power;
         newEntity.GetComponent<Entity>().generation = this.generation + 1;
+        Color newColor = gameObject.GetComponent<Renderer>().material.color;
+        newColor.g += (1f/500f)*generation;
+        newEntity.GetComponent<Renderer>().material.color =newColor;
         
+
         return newEntity;
     }
 }
