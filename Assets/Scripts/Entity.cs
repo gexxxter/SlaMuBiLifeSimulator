@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Entity : MonoBehaviour {
 
+    public int power;
     // Use this for initialization
     float timeLastUpdate = 0f;
     void Start () {
-	}
+        power = Random.Range(0, 1000);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,7 +26,10 @@ public class Entity : MonoBehaviour {
     {
        if(col.gameObject.tag == "Entity")
         {
-            Destroy(col.gameObject);
+            Entity enemy =col.gameObject.GetComponent<Entity>();
+            if(enemy.power < this.power) {
+                Destroy(col.gameObject);
+            }
         }
     }
 }
