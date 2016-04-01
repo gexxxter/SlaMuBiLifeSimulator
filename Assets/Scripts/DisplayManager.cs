@@ -15,6 +15,7 @@ public class DisplayManager : MonoBehaviour
     public Text LPText;
     public Text EText;
 
+
     void Start()
     {
 
@@ -27,13 +28,13 @@ public class DisplayManager : MonoBehaviour
 
 
 
-    timeLastUpdate += Time.deltaTime;
+        timeLastUpdate += Time.deltaTime;
+        GameObject lowPowerEntity = null;
         if (timeLastUpdate >= 0.1f)
         {
             int highPower = 0;
             int lowPower = 1000;
             evos = GameObject.FindGameObjectsWithTag("Entity");
-
             foreach (GameObject checkEntity in evos)
             {
 
@@ -42,10 +43,12 @@ public class DisplayManager : MonoBehaviour
                 if (checkPower > highPower)
                 {
                     highPower = checkPower;
+
                 }
                 if (checkPower < lowPower)
                 {
                     lowPower = checkPower;
+                    lowPowerEntity = checkEntity;
                 }
             }
 
@@ -54,10 +57,17 @@ public class DisplayManager : MonoBehaviour
             LPText.text = "" + lowPower;
             EText.text = "" + evos.Length;
 
+
+            Minicam miniCam = GameObject.FindGameObjectWithTag("miniCam").GetComponent<Minicam>();
+            miniCam.entity = lowPowerEntity;
+
             winText.text = "SlaMuBi Life Simulator";
 
             timeLastUpdate = 0f;
+
+
         }
+
 
     }
 }
