@@ -21,10 +21,18 @@ public class Entity : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timeLastUpdate += Time.deltaTime;
-        if(timeLastUpdate >= 0.033f)
+        if (timeLastUpdate >= 0.033f)
         {
-            transform.position += new Vector3(Random.Range(-1f,1f), Random.Range(-1f, 1f), 0f);
+            transform.position += new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
             timeLastUpdate = 0f;
+
+            
+         RaycastHit hit = new RaycastHit();
+         if (Physics.Raycast (transform.position, -Vector3.up, out hit)) {
+             var distanceToGround = hit.distance;
+                if (distanceToGround > 0 && generation < 10) { Destroy(gameObject); }
+         }
+         
         }
         timeLastBreed += Time.deltaTime;
 
