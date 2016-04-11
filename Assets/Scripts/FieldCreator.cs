@@ -3,11 +3,13 @@ using System.Collections;
 
 public class FieldCreator : MonoBehaviour
 {
-
+    public float power;
     public int GroundSideLenght = 100; // field length
     public GameObject GroundCell;
     public float yPos;
     public float xPos;
+    public float xscale;
+    public float yscale;
     public float xMultiplier;
     public float yMultiplier;
     public float hvMultiplier;
@@ -16,8 +18,12 @@ public class FieldCreator : MonoBehaviour
     public float cellCounter;
     void Start()
     {
+        power = 20000;
+
         yPos = 0;
         xPos = 0;
+        yscale = this.transform.localScale.y;
+        xscale = this.transform.localScale.x;
         xMultiplier = 1;
         yMultiplier = 1;
         hvMultiplier = 1;
@@ -29,13 +35,13 @@ public class FieldCreator : MonoBehaviour
         for (int i = 0; i < GroundSideLenght * GroundSideLenght; ++i)
         {
             Instantiate(GroundCell, new Vector3(xPos * xMultiplier, yPos * yMultiplier, 1f), Quaternion.identity);
-            yPos += 1 * hvMultiplier;
+            yPos += yscale * hvMultiplier;
             cellCounter += 1;
 
             if (yPos == (GroundSideLenght / 2) * hvMultiplier)
             {
                 yPos = 0;
-                xPos += 1 * hvMultiplier;
+                xPos += xscale * hvMultiplier;
 
             };
 

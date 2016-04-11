@@ -15,7 +15,7 @@ public class GameCreator : MonoBehaviour {
         {
             Instantiate(entity, new Vector3(Random.Range((horizontalSize / 2)*-1, (horizontalSize/2)), Random.Range(verticalSize / 2*-1, verticalSize/2), 0f), Quaternion.identity);            
         }
-        print ("Started");
+       // print ("Started");
 
     }
 }

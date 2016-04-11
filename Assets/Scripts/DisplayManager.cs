@@ -32,13 +32,13 @@ public class DisplayManager : MonoBehaviour
         GameObject lowPowerEntity = null;
         if (timeLastUpdate >= 0.1f)
         {
-            int highPower = 0;
-            int lowPower = 1000;
+            float highPower = 0;
+            float lowPower = 1000;
             evos = GameObject.FindGameObjectsWithTag("Entity");
             foreach (GameObject checkEntity in evos)
             {
 
-                int checkPower = checkEntity.GetComponent<Entity>().power;
+                float checkPower = checkEntity.GetComponent<Entity>().power;
 
                 if (checkPower > highPower)
                 {
