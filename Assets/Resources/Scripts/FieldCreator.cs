@@ -3,22 +3,20 @@ using System.Collections;
 
 public class FieldCreator : MonoBehaviour
 {
-    public float power;
+    public float power = 2000;
     public int GroundSideLenght = 100; // field length
     public GameObject GroundCell;
-    public float yPos;
-    public float xPos;
+    public float yPos = 0;
+    public float xPos = 0;
     public float xscale;
     public float yscale;
-    public float xMultiplier;
-    public float yMultiplier;
-    public float hvMultiplier;
-    public float hCounter;
-    public float vCounter;
+    public float xMultiplier = 1;
+    public float yMultiplier = 1;
+    public float hvMultiplier = 1;
     public float cellCounter;
     void Start()
     {
-        power = 20000;
+        
 
         yPos = 0;
         xPos = 0;

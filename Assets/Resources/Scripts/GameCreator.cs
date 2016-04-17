@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameCreator : MonoBehaviour {
 
-    public int entityCount = 100;
+    public int entityCount = 20;
     public GameObject entity;
     public float verticalSize;
     public float horizontalSize;

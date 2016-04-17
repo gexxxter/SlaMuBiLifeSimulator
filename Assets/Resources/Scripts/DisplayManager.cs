@@ -30,7 +30,7 @@ public class DisplayManager : MonoBehaviour
 
         timeLastUpdate += Time.deltaTime;
         GameObject lowPowerEntity = null;
-        if (timeLastUpdate >= 0.1f)
+        if (timeLastUpdate >= 1f)
         {
             float highPower = 0;
             float lowPower = 1000;
